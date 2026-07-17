@@ -1,0 +1,67 @@
+.lantern-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 2rem;
+    max-width: 100%;
+}
+
+.scene {
+    width: 220px;
+    height: 220px;
+    perspective: 1000px;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 16s linear infinite;
+}
+
+.carousel.paused {
+    animation-play-state: paused;
+}
+
+.face {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border: 3px solid #ffb450;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: #333;
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 6 mặt xếp thành hình lục giác, cách tâm ~190px */
+.face1 { transform: rotateY(0deg)   translateZ(190px); }
+.face2 { transform: rotateY(60deg)  translateZ(190px); }
+.face3 { transform: rotateY(120deg) translateZ(190px); }
+.face4 { transform: rotateY(180deg) translateZ(190px); }
+.face5 { transform: rotateY(240deg) translateZ(190px); }
+.face6 { transform: rotateY(300deg) translateZ(190px); }
+
+@keyframes rotateCarousel {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+}
+
+@media (max-width: 500px) {
+    .scene { width: 160px; height: 160px; }
+    .face { width: 160px; height: 160px; }
+    .face1 { transform: rotateY(0deg)   translateZ(138px); }
+    .face2 { transform: rotateY(60deg)  translateZ(138px); }
+    .face3 { transform: rotateY(120deg) translateZ(138px); }
+    .face4 { transform: rotateY(180deg) translateZ(138px); }
+    .face5 { transform: rotateY(240deg) translateZ(138px); }
+    .face6 { transform: rotateY(300deg) translateZ(138px); }
+}
